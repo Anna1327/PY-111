@@ -1,8 +1,10 @@
 """
 My little Stack
 """
-from typing import Any
+from typing import Any, List
 
+
+_stack: List = []
 
 def push(elem: Any) -> None:
 	"""
@@ -11,7 +13,7 @@ def push(elem: Any) -> None:
 	:param elem: element to be pushed
 	:return: Nothing
 	"""
-	print(elem)
+	_stack.append(elem)
 	return None
 
 
@@ -21,7 +23,9 @@ def pop() -> Any:
 
 	:return: popped element
 	"""
-	return None
+	if not _stack:
+		return None
+	return _stack.pop()
 
 
 def peek(ind: int = 0) -> Any:
@@ -32,7 +36,9 @@ def peek(ind: int = 0) -> Any:
 	:return: peeked element or None if no element in this place
 	"""
 	print(ind)
-	return None
+	if ind not in range(len(_stack)):
+		return None
+	return _stack[-(ind + 1)]
 
 
 def clear() -> None:
@@ -41,4 +47,4 @@ def clear() -> None:
 
 	:return: None
 	"""
-	return None
+	return _stack.clear()
