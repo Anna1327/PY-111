@@ -23,6 +23,8 @@ def pop() -> Any:
 
 	:return: popped element
 	"""
+	if not _stack:
+		return None
 	return _stack.pop()
 
 
@@ -34,7 +36,9 @@ def peek(ind: int = 0) -> Any:
 	:return: peeked element or None if no element in this place
 	"""
 	print(ind)
-	return None
+	if ind not in range(len(_stack)):
+		return None
+	return _stack[-(ind + 1)]
 
 
 def clear() -> None:
@@ -43,4 +47,4 @@ def clear() -> None:
 
 	:return: None
 	"""
-	return None
+	return _stack.clear()
