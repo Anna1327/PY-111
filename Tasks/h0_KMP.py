@@ -2,9 +2,10 @@ from typing import Optional, Sequence
 
 inp_string = "мама мыла раму"
 substr = "мыла"
+# inp_string = "Hello, tiny world!"
+# substr = "Hell"
 
-i = 0
-j = 0
+
 
 def kmp_algo(inp_string: str, substr: str) -> (int):
 	"""
@@ -32,7 +33,9 @@ def kmp_algo(inp_string: str, substr: str) -> (int):
 					prefix_list[i - 1] = j
 
 		return prefix_list
-	global i,j
+
+	i = 0
+	j = 0
 	p = prefix_fun(substr)
 
 	while i < len(inp_string):
@@ -48,6 +51,10 @@ def kmp_algo(inp_string: str, substr: str) -> (int):
 					j = (p[j - 1])
 
 	# print(inp_string, substr, prefix_fun)
+		if substr not in inp_string:
+			return None
 	return -1
 
+
 print(kmp_algo(inp_string, substr))
+
